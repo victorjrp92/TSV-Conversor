@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Convert TSV to Excel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #b7c8d5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #1e3160;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    label {
+      background-color: #edc948;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"] {
+      background-color: #1e3160;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #fde9a7;
+    }
+    .file-name {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TSV to Excel</h1>
+    <form method="post" action="/upload" enctype="multipart/form-data">
+      <label for="file">Add File</label>
+      <input type="file" id="file" name="file" onchange="displayFileName()">
+      <div class="file-name" id="file-name">No file chosen</div>
+      <input type="submit" value="Convert to Excel">
+    </form>
+  </div>
+  <script>
+    function displayFileName() {
+      var input = document.getElementById('file');
+      var fileName = input.files[0].name;
+      document.getElementById('file-name').textContent = fileName;
+    }
+  </script>
+</body>
+</html>
